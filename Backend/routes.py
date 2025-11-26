@@ -32,7 +32,9 @@ def chatbot_response():
 """
 from flask import request, jsonify, render_template
 from Backend import app
-#from flask import Blueprint, request, jsonify, render_template
+from Backend.database_manager import DatabaseManager
+import uuid #Identifiants unique
+
 
 
 from Backend.nlp import analyze_intent
@@ -40,20 +42,19 @@ from Backend.faq import get_faq_answer
 from Backend.bank_transactions import get_transaction_info
 from Backend.fraude_detection import check_fraud
 
-#bp = Blueprint("routes", __name__)
-
 
 @app.route("/")
-#@bp.route("/")
 def index():
     return render_template("chat.html")
 
-
 @app.route('/chatbot', methods=['POST'])
-#@bp.route('/chatbot', methods=['POST'])
 def chatbot_response():
     user_input = request.json['message']
-    intent, entities = analyze_intent(user_input.lower())
+    #intent, entities = analyze_intent(user_input.lower())
+    intent, entities = analyze_intent(user_input)
+
+    # Générer un ID utilisateur unique chaque fois avec maximum 8 caractères
+    user_id = str(uuid.uuid4())[:8]
 
     # 1️⃣ FAQ — doit être traité EN PREMIER
     if intent == 'faq':
@@ -70,6 +71,10 @@ def chatbot_response():
     # 4️⃣ Intention inconnue
 
     else:
-        response = "Désolé, je n'ai pas compris votre demande. Veuillez reformuler."
+        response = "Désolé, je n'ai pas compris votre demande. Veuillez reformuler ou contacter un conseiller clientèle au +226 XX XX XX XX."
+
+     # Sauvegarde de la passe de donnée
+    DatabaseManager.save_conversation(user_id, user_input, response, intent)
+
 
     return jsonify({"response": response})

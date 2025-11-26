@@ -1,4 +1,4 @@
-
+"""
 def get_transaction_info(entities):
     account_number = entities.get('account_number')
     # Logique pour récupérer les détails des transactions
@@ -25,4 +25,3 @@ def get_transaction_info(entities):
         response += f"- {t['date']} | {t['type']} | {t['montant']}\n"
 
     return response
-"""

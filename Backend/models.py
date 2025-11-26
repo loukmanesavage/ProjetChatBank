@@ -1,13 +1,17 @@
-from .app import db
 
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100))
-    account_number = db.Column(db.String(20))
+from . import db
+from datetime import datetime
 
-class Transaction(db.Model):
+class Conversation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    amount = db.Column(db.Float)
-    transaction_type = db.Column(db.String(20))
-    date = db.Column(db.DateTime)
+    user_id = db.Column(db.String(100), index=True)
+    user_message = db.Column(db.Text)
+    bot_response = db.Column(db.Text)
+    intent = db.Column(db.String(100))
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+
+# Ici nous avons notre classe ChatMessage
+class ChatMessage(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_message = db.Column(db.Text)
+    bot_response = db.Column(db.Text)

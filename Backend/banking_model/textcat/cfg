@@ -1,0 +1,13 @@
+{
+  "labels":[
+    "solde_compte",
+    "virement",
+    "horaires",
+    "frais",
+    "carte_probleme",
+    "mot_passe_oublie",
+    "ouvrir_compte"
+  ],
+  "threshold":0.0,
+  "positive_label":null
+}

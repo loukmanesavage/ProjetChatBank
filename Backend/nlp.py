@@ -1,8 +1,19 @@
+from .nlp_enhanced import spacy_helper
 
 def analyze_intent(text):
     text = text.lower()
     intent = ""
     entities = {}
+
+    # ✅ ESSAYER SPACY EN PREMIER
+    spacy_intent, spacy_entities = spacy_helper.detect_intent_with_spacy(text)
+    
+    if spacy_intent:
+        return spacy_intent, spacy_entities
+    
+    intent = ""
+
+
 
     # Info solde
     if any(word in text for word in ["solde", "balance", "argent disponible"]):
