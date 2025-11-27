@@ -1,4 +1,4 @@
- # Exemple de gestion de questions fréquentes
+ # Exemple de gestion de questions fréquentes au niveau de Services Bancaire
 
 def get_faq_answer(user_input):
     msg = user_input.lower().strip()
@@ -9,7 +9,7 @@ def get_faq_answer(user_input):
     ]
     for kw in acceuil :
         if kw in msg :
-            return "OUI Bonjour comment allez vous? Merci de nous avoir contacter, Que pouvons nous faire pour vous? ou Comment nous pouvons vous aider?"
+            return "Oui Bonjour comment allez vous? je suis votre assistant Bancaire Virtuelle, Que pouvons nous faire pour vous? ou Comment nous pouvons vous aider?"
 
     # FAQ :Pour les heures d'ouverture
     horaires_keywords = [
@@ -48,8 +48,18 @@ def get_faq_answer(user_input):
     for kw in carte_perdu:
         if kw in msg :
             return "Si votre carte a été avalée ou perdue :1-Contactez immédiatement le service client : +226 XX XX XX XX 2-Bloquez la carte via l'application 3-Une nouvelle carte pourra être émise en agence si vous vous rendez."
+        
+    Fin_discutions = [" Merci pour l'assitance", "Merci", "a plus","merci"]
+    for kw in Fin_discutions :
+        if kw in msg :
+            return "Je vous en prie ! C'est toujours un plaisir d'aider.Avez-vous besoin d'autre chose ?"
+        
+    demande_conseil = ["Parler a un conseiller", "Assistance", "Assistant" ,"parler a un conseiller","assistance","assistant","conseiller" ,"Conseiller"]
+    for kw in demande_conseil :
+        if kw in msg :
+            return "Vous pouvez contacter un conseiller ou avoir une assistance au Numéro +226 XX XX XX XX"
 
 
     #S'il y'a aucune FAQ reconnue
-    return "Je ne suis pas sûr de la réponse à cette question. Pouvez-vous reformuler ?ou contacter un conseiller au +226 XX XX XX XX"
+    return "Je ne suis pas sûr de la réponse à cette question. Pouvez-vous reformuler ?ou Si vous souhaitez plus de détails, je peux vous mettre en relation avec un conseiller"
 

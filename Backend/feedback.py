@@ -1,5 +1,3 @@
-
-
 from . import db
 
 def collect_feedback(user_id, feedback):

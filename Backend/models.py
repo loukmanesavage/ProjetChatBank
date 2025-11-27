@@ -1,4 +1,6 @@
-
+##Ici nous avons crée des classes pour le stockage au niveau de notre Base de données
+#Ici nous enregistrons les conversations des utilisateurs sur Postgre
+#Nous avons deux classes Conversation et ChatMesssage
 from . import db
 from datetime import datetime
 

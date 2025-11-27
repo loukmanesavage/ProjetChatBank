@@ -7,8 +7,8 @@ class SpacyHelper:
         try:
             self.nlp = spacy.load("fr_core_news_sm")
         except OSError:
-            # Si le modèle n'est pas installé, donner des instructions
-            print("❌ Modèle SpaCy français non trouvé. Installez-le avec:")
+            # ici il verifie si le modèle est installer ou non puis il donne des instructions
+            print("Modèle SpaCy français non trouvé. Installez-le avec:")
             print("python -m spacy download fr_core_news_sm")
             self.nlp = None
 
@@ -20,7 +20,7 @@ class SpacyHelper:
         entities = {}
         intent = None
 
-        # Extraction d'entités avec SpaCy
+        # Extraction des entités avec SpaCy
         for ent in doc.ents:
             if ent.label_ in ["MONEY", "CARDINAL"]:
                 entities['montant'] = ent.text
@@ -53,7 +53,7 @@ class SpacyHelper:
         if any(token.lemma_ in fraud_patterns for token in doc):
             intent = "fraude_detection"
 
-        # 4. FAQ - avec une logique plus fine
+        # 4. FAQ - avec une logique très simple
         if self._is_faq_intent(doc):
             intent = "faq"
 
@@ -86,6 +86,23 @@ class SpacyHelper:
             if any(token.lemma_ in keywords for token in doc):
                 return True
         return False
-
-# Instance globale
+    ##Nouveau
+    
+    def extract_account_number(self, text):
+        """Extrait et valide les numéros de compte"""
+        # Patterns pour numéros de compte (16 chiffres)
+        patterns = [
+            r'\b\d{16}\b',  # 16 chiffres consécutifs
+            r'\b\d{4}[\s-]?\d{4}[\s-]?\d{4}[\s-]?\d{4}\b'  # Format avec séparateurs
+        ]
+        
+        for pattern in patterns:
+            matches = re.findall(pattern, text)
+            if matches:
+                # Nettoyer le numéro (enlever espaces et tirets)
+                clean_number = re.sub(r'[\s-]', '', matches[0])
+                return clean_number
+        return None
+    
+   
 spacy_helper = SpacyHelper()
