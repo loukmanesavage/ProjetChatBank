@@ -1,32 +1,3 @@
-"""
-def get_transaction_info(entities):
-    account_number = entities.get('account_number')
-    # Logique pour récupérer les détails des transactions
-    # Exemple de réponse
-    return f"Détails des transactions pour le compte {account_number}."
-
-"""
-"""
-def get_transaction_info(entities):
-    account_number = entities.get('account_number')
-
-    if not account_number:
-        return "Veuillez fournir un numéro de compte pour voir les transactions."
-
-    # Exemple de transactions fictives
-    fake_transactions = [
-        {"date": "2025-11-20", "type": "Retrait", "montant": "-10 000 FCFA"},
-        {"date": "2025-11-18", "type": "Dépôt", "montant": "+50 000 FCFA"},
-        {"date": "2025-11-16", "type": "Paiement Orange Money", "montant": "-5 000 FCFA"},
-    ]
-
-    # Construction de la réponse
-    response = f"📄 Transactions récentes pour le compte **{account_number}** :\n"
-    for t in fake_transactions:
-        response += f"- {t['date']} | {t['type']} | {t['montant']}\n"
-
-    return response
-"""
 import re
 
 def validate_account_number(account_number):
@@ -50,8 +21,6 @@ def validate_account_number(account_number):
 def get_account_balance(entities, user_input=""):
     """
     Gère spécifiquement les demandes de solde
-    entities: les entités extraites par NLP (contient le numéro de compte si détecté)
-    user_input: le message original de l'utilisateur (pour détecter les mots-clés de solde)
     """
     
     # nous recherchons le numero de comptes
@@ -72,15 +41,15 @@ def get_account_balance(entities, user_input=""):
         # Nous vérifions s'il est valide
         is_valid, validation_result = validate_account_number(account_number)
         if not is_valid:
-            return f"❌ {validation_result}"
+            return f" {validation_result}"
         
         # Afficher le solde(Ici nous avons mis quelques chose de simple afin de voir le fonctionnement)
         return f"""
-✅ **Solde du compte :** {account_number}
+ **Solde du compte :** {account_number}
 
-💳 **Solde actuel :** 1,567.89 €
+**Solde actuel :** 1,567.89 €
 
-📊 **Dernière transaction :**
+ **Dernière transaction :**
 • 2025-11-27 | Amazon Market | -45,99 €
 
 _Que souhaitez-vous faire ?_
@@ -101,7 +70,7 @@ def get_transaction_info(entities):
     is_valid, validation_result = validate_account_number(account_number)
     
     if not is_valid:
-        return f"❌ {validation_result}"
+        return f"{validation_result}"
     
     # Numéro valide - afficher les transactions
     valid_account = validation_result
@@ -119,7 +88,7 @@ def get_transaction_info(entities):
     response = f"""
 <br>✅ Numéro de compte validé :{valid_account}
 
-<br>📊Dernières transactions :
+<br>Dernières transactions :
 
 """
     
@@ -127,7 +96,7 @@ def get_transaction_info(entities):
         response += f"Date->>{t['date']} | {t['description']} | {t['montant']}<br>"
 
     response += f"""
-<br>💳 Solde actuel : 1,567.89 €
+<br> Solde actuel : 1,567.89 €
 
 <br>🔍 Options disponibles :
 <br>1<-- Faire un virement

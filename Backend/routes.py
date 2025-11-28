@@ -4,6 +4,7 @@ from Backend.database_manager import DatabaseManager
 import uuid #Identifiants unique
 
 
+
 #ici Nous importons les fonctions spécifiques depuis les fichiers present dans mon package Backend
 from Backend.nlp import analyze_intent
 from Backend.faq import get_faq_answer
@@ -18,6 +19,7 @@ def index():
 
 @app.route('/chatbot', methods=['POST'])
 def chatbot_response():
+
     user_input = request.json['message']
     #intent, entities = analyze_intent(user_input.lower())
     intent, entities = analyze_intent(user_input)

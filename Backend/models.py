@@ -2,6 +2,7 @@
 #Ici nous enregistrons les conversations des utilisateurs sur Postgre
 #Nous avons deux classes Conversation et ChatMesssage
 from . import db
+
 from datetime import datetime
 
 class Conversation(db.Model):
