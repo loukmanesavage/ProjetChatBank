@@ -96,7 +96,7 @@ def get_transaction_info(entities):
     response += f"""
 <br> Solde actuel : 1,567.89 €
 
-<br>🔍 Options disponibles :
+<br> Options disponibles :
 <br>1<-- Faire un virement
 <br>2<-- Consulter plus d'historique  
 <br>3<-- Voir mes relevés
