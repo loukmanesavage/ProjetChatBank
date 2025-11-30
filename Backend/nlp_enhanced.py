@@ -1,3 +1,4 @@
+
 import spacy
 import re
 
@@ -8,7 +9,7 @@ class SpacyHelper:
             self.nlp = spacy.load("fr_core_news_sm")
         except OSError:
             # ici il verifie si le modèle est installer ou non puis il donne des instructions
-            print("Modèle SpaCy français non trouvé. Installez-le avec:")
+            print("Pour verifié si Spacy est installer, Si non. Installez-le avec:")
             print("python -m spacy download fr_core_news_sm")
             self.nlp = None
 
@@ -59,6 +60,7 @@ class SpacyHelper:
 
         return intent, entities
 
+
     def _extract_transaction_entities(self, doc, entities):
         """Extrait les entités spécifiques aux transactions"""
         for token in doc:
@@ -71,6 +73,7 @@ class SpacyHelper:
             # Destinataires (noms propres)
             if token.ent_type_ == "PER":
                 entities['destinataire'] = token.text
+                
 
     def _is_faq_intent(self, doc):
         """Détecte si c'est une intention FAQ avec SpaCy"""
@@ -102,7 +105,8 @@ class SpacyHelper:
                 # Nettoyer le numéro (enlever espaces et tirets)
                 clean_number = re.sub(r'[\s-]', '', matches[0])
                 return clean_number
-        return None
+             
+            return None
     
    
 spacy_helper = SpacyHelper()

@@ -19,9 +19,7 @@ def validate_account_number(account_number):
     return True, clean_account
 
 def get_account_balance(entities, user_input=""):
-    """
-    Gère spécifiquement les demandes de solde
-    """
+    # Ici nous gerons les solde
     
     # nous recherchons le numero de comptes
     account_number = entities.get('account_number')
@@ -45,12 +43,12 @@ def get_account_balance(entities, user_input=""):
         
         # Afficher le solde(Ici nous avons mis quelques chose de simple afin de voir le fonctionnement)
         return f"""
- **Solde du compte :** {account_number}
+ Solde du compte : {account_number}
 
-**Solde actuel :** 1,567.89 €
+Solde actuel : 1,567.89 €
 
- **Dernière transaction :**
-• 2025-11-27 | Amazon Market | -45,99 €
+ Dernière transaction :
+2025-11-27 | Amazon Market | -45,99 €
 
 _Que souhaitez-vous faire ?_
 """
@@ -86,7 +84,7 @@ def get_transaction_info(entities):
 
     # Mise en place d'une réponse formatée
     response = f"""
-<br>✅ Numéro de compte validé :{valid_account}
+<br> Numéro de compte validé :{valid_account}
 
 <br>Dernières transactions :
 

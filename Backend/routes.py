@@ -63,7 +63,7 @@ def chatbot_response():
             entities['account_number'] = account_number
             response = get_transaction_info(entities)
         else:
-            response = "Désolé, je n'ai pas compris votre demande. Veuillez reformuler ou contacter un conseiller clientèle au +226 XX XX XX XX."
+            response = "Désolé, je n'ai pas compris votre demande. Veuillez reformuler ou contacter un conseiller clientèle au +226 56 48 92 03."
             
 
      # Sauvegarde de la passe de donnée

@@ -27,6 +27,7 @@ def analyze_intent(text):
 
 
 
+
     # Info solde(Nous l'avons dirriger vers transactions)
     if any(word in text for word in ["solde", "balance", "argent disponible"]):
         intent = "bank_transactions"
@@ -99,6 +100,8 @@ def analyze_intent(text):
         "assistant",
         "conseiller",
         "Conseiller",
+        "Bonsoir",
+        "bonsoir",
     ]):
         intent = "faq"
    

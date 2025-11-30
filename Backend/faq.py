@@ -4,7 +4,7 @@ def get_faq_answer(user_input):
     msg = user_input.lower().strip()
 
     ##L'acceuil
-    acceuil = ["Bonjour", "Hello", "Salut", "salut", "Morning", "services" , "infos", "service", "bonjour", "hello"
+    acceuil = ["Bonjour", "Hello", "Salut", "salut", "Morning", "services" , "infos", "service", "bonjour", "hello", "Bonsoir","bonsoir"
 
     ]
     for kw in acceuil :
@@ -47,7 +47,7 @@ def get_faq_answer(user_input):
     ]
     for kw in carte_perdu:
         if kw in msg :
-            return "Si votre carte a été avalée ou perdue :1-Contactez immédiatement le service client : +226 XX XX XX XX 2-Bloquez la carte via l'application 3-Une nouvelle carte pourra être émise en agence si vous vous rendez."
+            return "Si votre carte a été avalée ou perdue :1-Contactez immédiatement le service client : +226 56 48 92 03 2-Bloquez la carte via l'application 3-Une nouvelle carte pourra être émise en agence si vous vous rendez."
         
     Fin_discutions = [" Merci pour l'assitance", "Merci", "a plus","merci"]
     for kw in Fin_discutions :
@@ -57,7 +57,7 @@ def get_faq_answer(user_input):
     demande_conseil = ["Parler a un conseiller", "Assistance", "Assistant" ,"parler a un conseiller","assistance","assistant","conseiller" ,"Conseiller"]
     for kw in demande_conseil :
         if kw in msg :
-            return "Vous pouvez contacter un conseiller ou avoir une assistance au Numéro +226 XX XX XX XX"
+            return "Vous pouvez contacter un conseiller ou avoir une assistance au Numéro +226 56 48 92 03"
 
 
     #S'il y'a aucune FAQ reconnue
