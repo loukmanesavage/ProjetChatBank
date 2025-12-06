@@ -1,8 +1,8 @@
 
-from . import db  # ici on importe bd depuis le package
+from . import db  # ici on importe bd depuis le package 
 from .models import Conversation #iCi nous allons importe la classe conversation au niveau de Models
 from datetime import datetime  #Ici pour l'heure et la date exact
-import uuid #Ici nous souhaitons des identifiants uniques en fonction de chaque instrucions
+import uuid #Ici nous souhaitons des identifiants uniques en fonction de chaque instrucions(la generation se fait aleatoirement)
 
 class DatabaseManager:
     

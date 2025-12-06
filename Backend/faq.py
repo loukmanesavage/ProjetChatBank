@@ -1,4 +1,4 @@
- # Exemple de gestion de questions fréquentes au niveau de Services Bancaire
+ # Exemple de gestion de questions fréquentes au niveau de Services Bancaires
 
 def get_faq_answer(user_input):
     msg = user_input.lower().strip()
@@ -13,7 +13,7 @@ def get_faq_answer(user_input):
 
     # FAQ :Pour les heures d'ouverture
     horaires_keywords = [
-        "heure", "horaires", "ouvre", "ouverture", "fermé", "quand êtes vous ouvert"
+        "heure", "horaires", "ouvre", "ouverture", "fermé", "quand êtes vous ouvert","fermeture",
     ]
     for kw in horaires_keywords:
         if kw in msg:

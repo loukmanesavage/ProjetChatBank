@@ -13,7 +13,7 @@ class Conversation(db.Model):
     intent = db.Column(db.String(100))
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
 
-# Ici nous avons notre classe ChatMessage
+#Au niveau d'Ici nous avons notre classe ChatMessage
 class ChatMessage(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_message = db.Column(db.Text)

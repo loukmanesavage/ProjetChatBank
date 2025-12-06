@@ -40,7 +40,7 @@ def analyze_intent(text):
     elif "fraude" in text or "scam" in text or "arnaque" in text:
         intent = "fraude_detection"
 
-    # FAQ / Ouvrir un compte
+    # FAQ /Pour Ouvrir un compte
     elif any(word in text for word in ["ouvrir un compte", "ouvrir compte", "comment ouvrir", "créer un compte"]):
         intent = "faq"
         ##Ici nous avons definit tout les mots clé qui peuvent avoir pour intention Faq et autres

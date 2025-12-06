@@ -8,7 +8,7 @@ def validate_account_number(account_number):
     # Nettoyer le numéro
     clean_account = re.sub(r'[\s-]', '', account_number)
     
-    # Vérifier la longueur
+    # Vérifier la longueur(Ici nous savons que le numéro de carte dois etrre autour de 16 chiffre)
     if len(clean_account) != 16:
         return False, f"Le numéro de compte doit contenir 16 chiffres. Vous en avez saisi {len(clean_account)}."
     
@@ -64,7 +64,7 @@ def get_transaction_info(entities):
     if not account_number:
         return "Veuillez fournir un numéro de compte pour voir les transactions. Exemple : 5565562322122222"
 
-    # Valider le numéro de compte
+    # Valider le numéro de compte avant la suite
     is_valid, validation_result = validate_account_number(account_number)
     
     if not is_valid:
@@ -84,7 +84,7 @@ def get_transaction_info(entities):
 
     # Mise en place d'une réponse formatée
     response = f"""
-<br> Numéro de compte validé :{valid_account}
+<br> Numéro de compte validé :{valid_account} 
 
 <br>Dernières transactions :
 

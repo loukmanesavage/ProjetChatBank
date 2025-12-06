@@ -4,7 +4,8 @@ import re
 
 class SpacyHelper:
     def __init__(self):
-        # Charger le modèle français de SpaCy
+        # Charger le modèle français de SpaCy 
+        
         try:
             self.nlp = spacy.load("fr_core_news_sm")
         except OSError:
@@ -40,7 +41,7 @@ class SpacyHelper:
             if account_match:
                 entities['account_number'] = account_match.group()
 
-        # 2. Intentions de transactions
+        # 2. les Intentions au niveau de transactions 
         transaction_patterns = [
             "transaction", "transfert", "envoyer", "virement", "paiement"
         ]
